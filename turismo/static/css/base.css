@@ -1,0 +1,62 @@
+.menu {
+	background: #fff;
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	top: 0;
+	z-index: 1000;
+}
+
+.menu h3 {
+	color: #000;
+	font-size: 1.9em;
+	padding: 29px;
+	margin: 0;
+	font-weight: 300;
+	background: #A0A0A0 ;
+	border-bottom: 1px solid #140717;
+}
+
+.menu a {
+	display: block;
+	color: #000000;
+	font-size: 1.1em;
+	font-weight: 300;
+	border-bottom: 1px solid #140717;
+	padding: 1em;
+}
+
+.menu a:hover {
+	background: #E8E8E8;
+}
+
+.menu a:active {
+	background: #afdefa;
+	color: #47a3da;
+}
+
+
+body
+{
+    background-color:#F0F0F0;
+    color:Black;
+}
+
+.container
+{
+    width:100%;
+}
+.container header
+{
+    margin-left:200px;
+}
+
+#centro
+{
+    margin-left:230px;
+}
+
+input[type="text"]
+{
+    height:30px;   
+}

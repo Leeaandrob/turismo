@@ -1,0 +1,37 @@
+﻿body
+{
+    background-color:#F0F0F0;
+    color:Black;
+}
+body header,h4
+{
+    color:#47a3da;
+}
+
+.container
+{
+    width:100%;
+    
+}
+.container header
+{
+    margin-left:200px;
+}
+.cbp-spmenu h3
+{
+    padding:41px;    
+}
+
+#centro
+{
+    margin-left:230px;
+}
+label
+{
+    color:Black; 
+}
+
+input[type="text"]
+{
+    height:30px;   
+}
