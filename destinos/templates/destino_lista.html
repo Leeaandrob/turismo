@@ -1,8 +1,22 @@
 {% extends 'base.html' %}
 {%block content%}
 
-{%for d in destinos%}
-	{{d.name}}<br/>
-{%endfor%}
+<table class="table">
+	<thead>
+		<tr>
+			<th>Editar</th>
+			<th>Nome</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for d in destinos%}
+			<tr>
+				<td class="a-table"><a href="#">Editar</a></td>
+				<td>{{d.name}}</td>
+			</tr>
+		{%endfor%}
+	</tbody>
+</table>
+
 
 {%endblock%}
