@@ -1,0 +1,9 @@
+bin
+build
+include
+lib
+local
+man
+share
+*.pyc
+*.db
