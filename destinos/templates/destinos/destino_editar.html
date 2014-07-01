@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{%block content%}
+
+Editar
+
+<form class="form-inline" method="POST" >
+	{% csrf_token %}			
+	<p><label>{{form.name.label}} :</label>{{form.name}}</p>
+	<p><button type="submit" class="btn btn-success">Salvar</button></p>
+</form>	
+{%endblock%}
