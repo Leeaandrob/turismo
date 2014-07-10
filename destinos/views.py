@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
-from .forms import DestinoForm
-from .models import Destino
+from destinos.forms import DestinoForm
+from destinos.models import Destino
 # Create your views here.
 
 def destino_create(request):
@@ -14,8 +14,7 @@ def destino_create(request):
 def destino_create(request):
 	form = DestinoForm(request.POST)
 	if not form.is_valid():
-		return render(request, 'destino_novo.html',
-			{'form': form})
+		return render(request, 'destino_novo.html',{'form': form})
 	obj = form.save()
 	return HttpResponseRedirect("/destinos/lista/")
 

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Editar</th>
+			<th>Nome</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for g in grupos%}
+			<tr>
+				<td class="a-table">
+				<a href="#">Editar</a></td>
+				<td>{{g.name}}</td>
+				<td>{{g.destino}}</td>
+			</tr>
+		{%endfor%}
+	</tbody>
+</table>
+
+
+{%endblock%}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%block content%}
+<form class="form-inline" method="POST" >
+	{% csrf_token %}			
+	<p><label>{{form.name.label}} :</label>{{form.name}}</p>
+	<p><label>{{form.destino.label}} :</label>{{form.destino}}</p>
+
+	<!--<select>
+		{%for d in destinos%}
+			<option value="{{d.id}}">{{d.name}}</option>
+		{%endfor%}
+	</select></p>
+	-->
+	<p><button type="submit" class="btn btn-success">Salvar</button></p>
+</form>	
+
+{%endblock%}
