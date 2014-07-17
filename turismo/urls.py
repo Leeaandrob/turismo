@@ -9,6 +9,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^destinos/',include('destinos.urls', namespace='destinos')),
-    url(r'^grupos/',include('grupos.urls', namespace='grupos')),
+    url(r'^destinos/',include('turismo.destinos.urls', namespace='destinos')),
+    url(r'^grupos/',include('turismo.grupos.urls', namespace='grupos')),
 )

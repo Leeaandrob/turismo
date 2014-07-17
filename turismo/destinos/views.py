@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
-from destinos.forms import DestinoForm
-from destinos.models import Destino
+from turismo.destinos.forms import DestinoForm
+from turismo.destinos.models import Destino
 # Create your views here.
 
 def destino_create(request):

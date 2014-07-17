@@ -2,9 +2,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from grupos.forms import GrupoForm
-from grupos.models import Grupo
-from destinos.models import Destino
+from turismo.grupos.forms import GrupoForm
+from turismo.grupos.models import Grupo
+from turismo.destinos.models import Destino
 # Create your views here.
 
 def grupo_create(request):
@@ -13,15 +13,7 @@ def grupo_create(request):
 def grupo_create(request):
 
 	form = GrupoForm(request.POST)
-	
-	#print form.is_valid()
-
 	if not form.is_valid():
-
-		#if request.POST:
-		#	raise Exception(form)
-		#	raise Exception(request.POST)
-
 		return render(request, 'grupo_novo.html',{'form': form, 'destinos':Destino.objects.all()})
 	obj = form.save()
 	return HttpResponseRedirect("/grupos/lista/")
