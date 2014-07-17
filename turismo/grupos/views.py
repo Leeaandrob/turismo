@@ -14,7 +14,7 @@ def grupo_create(request):
 
 	form = GrupoForm(request.POST)
 	if not form.is_valid():
-		return render(request, 'grupo_novo.html',{'form': form, 'destinos':Destino.objects.all()})
+		return render(request, 'grupo_novo.html', {'form': form})
 	obj = form.save()
 	return HttpResponseRedirect("/grupos/lista/")
 
