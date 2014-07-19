@@ -5,5 +5,7 @@ from turismo.destinos.models import Destino
 
 
 class Grupo(models.Model):
-	name = models.CharField(max_length=100)
-	destino = models.ForeignKey(Destino)
+    name = models.CharField(max_length=100)
+    destino = models.ForeignKey(Destino)
+    partida = models.CharField(max_length=10)
+    chegada = models.CharField(max_length=10)
