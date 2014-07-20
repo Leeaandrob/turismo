@@ -2,22 +2,42 @@
 {%block content%}
 
 Editar
-<form class="form-inline" method="POST" >
-    {% csrf_token %}            
-    <p><label>{{form.name.label}} :</label>{{form.name}}</p>
-    <p><label>{{form.destino.label}} :</label>{{form.destino}}</p>
-    <p><label>{{form.partida.label}} : </label>{{form.partida}}</p>
-    <p><label>{{form.chegada.label}} : </label>{{form.chegada}}</p>
-    <p><label>{{form.numpessoas.label}} : </label>{{form.numpessoas}}</p>
 
-    <!--<select id="{{form.destino}}">
-        {%for d in destinos%}
-            <option value="{{d.id}}">{{d.name}}</option>
-        {%endfor%}
-    </select></p>-->
-    
-    <p><button type="submit" class="btn btn-success">Salvar</button></p>
-</form> 
+
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#dados" data-toggle="tab">Dados</a></li>
+  <li><a href="#pessoas" data-toggle="tab">Pessoas</a></li>
+  <li><a href="#relatorio" data-toggle="tab">Relatórios</a></li>
+  <li><a href="#mensagem" data-toggle="tab">Mensagem</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="dados">
+      <form class="form-inline" method="POST" >
+        {% csrf_token %}            
+        <p><label>{{form.name.label}} :</label>{{form.name}}</p>
+        <p><label>{{form.destino.label}} :</label>{{form.destino}}</p>
+        <p><label>{{form.partida.label}} : </label>{{form.partida}}</p>
+        <p><label>{{form.chegada.label}} : </label>{{form.chegada}}</p>
+        <p><label>{{form.numpessoas.label}} : </label>{{form.numpessoas}}</p>
+        <p><label>{{form.situacao.label}}</label>{{form.situacao}}</p>
+        
+        <p><button type="submit" class="btn btn-success">Salvar</button></p>
+    </form> 
+  </div>
+   <div class="tab-pane" id="pessoas">
+    b
+   </div>
+    <div class="tab-pane" id="relatorio">
+    c
+    </div>
+    <div class="tab-pane" id="mensagem">
+    d
+    </div>
+</div>
+
+
+
 
  <script type="text/javascript">
     $('#id_partida').datepicker({
