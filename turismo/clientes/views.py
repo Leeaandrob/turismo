@@ -20,5 +20,21 @@ def cliente_create(request):
 def cliente_lista(request):
     return render(request, 'cliente_lista.html',{'clientes':Cliente.objects.all()})
 
-def cliente_edit(request):
-    pass
+def cliente_edit(request,cliente_id):
+    cliente = get_object_or_404(Cliente,id=cliente_id)
+    if request.method == 'POST':
+        return edit_grupo(request,cliente)
+    else:
+        return request_grupo(request,cliente)
+def edit_grupo(request,cliente):
+    form = ClienteForm(request.POST,instance=cliente)
+    if form.is_valid():
+        cliente = form.save(commit=False)
+        cliente.save()
+        return HttpResponseRedirect('/clientes/lista')
+    else:
+        return render(request,'cliente_editar.html',{'form':form})
+
+def request_grupo(request,cliente):
+    form = ClienteForm(instance=cliente)
+    return render(request,'cliente_editar.html',{'form':form})

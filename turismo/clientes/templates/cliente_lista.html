@@ -12,7 +12,7 @@
         {%for c in clientes%}
             <tr>
                 <td class="a-table">
-                <a href="#">Editar</a></td>
+                <a href="{% url 'clientes:cliente_edit' cliente_id=c.id %}">Editar</a></td>
                 <td>{{c.nome}}</td>
             </tr>
         {%endfor%}
