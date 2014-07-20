@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{%block content%}
+
+Editar
+<form class="form-inline" method="POST" >
+    {% csrf_token %}            
+    <p><label>{{form.name.label}} :</label>{{form.name}}</p>
+    <p><label>{{form.destino.label}} :</label>{{form.destino}}</p>
+    <p><label>{{form.partida.label}} : </label>{{form.partida}}</p>
+    <p><label>{{form.chegada.label}} : </label>{{form.chegada}}</p>
+    <p><label>{{form.numpessoas.label}} : </label>{{form.numpessoas}}</p>
+
+    <!--<select id="{{form.destino}}">
+        {%for d in destinos%}
+            <option value="{{d.id}}">{{d.name}}</option>
+        {%endfor%}
+    </select></p>-->
+    
+    <p><button type="submit" class="btn btn-success">Salvar</button></p>
+</form> 
+
+ <script type="text/javascript">
+    $('#id_partida').datepicker({
+        autoclose: true,
+        language: 'pt-BR',
+        format: "dd/mm/yyyy"
+    });
+
+    $('#id_chegada').datepicker({
+        autoclose: true,
+        language: 'pt-BR',
+        format: "dd/mm/yyyy"
+    });
+ </script>
+{%endblock%}
+

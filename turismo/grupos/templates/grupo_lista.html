@@ -9,17 +9,19 @@
 			<th>Destino</th>
 			<th>Partida</th>
 			<th>Chegada</th>
+			<th>Nº Pessoas</th>
 		</tr>
 	</thead>
 	<tbody>
 		{%for g in grupos%}
 			<tr>
 				<td class="a-table">
-				<a href="#">Editar</a></td>
+				<a href="{% url 'grupos:grupo_edit' grupo_id=g.id %}">Editar</a></td>
 				<td>{{g.name}}</td>
 				<td>{{g.destino}}</td>
 				<td>{{g.partida}}</td>
 				<td>{{g.chegada}}</td>
+				<td>{{g.numpessoas}}</td>
 			</tr>
 		{%endfor%}
 	</tbody>

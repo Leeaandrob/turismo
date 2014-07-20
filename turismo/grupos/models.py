@@ -9,3 +9,5 @@ class Grupo(models.Model):
     destino = models.ForeignKey(Destino)
     partida = models.CharField(max_length=10)
     chegada = models.CharField(max_length=10)
+    numpessoas = models.CharField(max_length=3)
+
