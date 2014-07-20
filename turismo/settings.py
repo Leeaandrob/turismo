@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'turismo.destinos',
     'turismo.grupos',
+    'turismo.clientes',
 )
 
 MIDDLEWARE_CLASSES = (
