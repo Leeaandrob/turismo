@@ -40,14 +40,14 @@ def edit_destino(request,destino):
         destino.save()
         return HttpResponseRedirect('/destinos/lista')
     else:
-        return render(request,'destinos/destino_editar.html',{'form':form})
+        return render(request,'destino_editar.html',{'form':form})
 
 def request_destino(request,destino):
     '''
         @request_funcao: View para obter os dados de um determinado funcao
     '''
     form = DestinoForm(instance=destino)
-    return render(request, 'destinos/destino_editar.html', {'form': form})
+    return render(request, 'destino_editar.html', {'form': form})
 
 
 

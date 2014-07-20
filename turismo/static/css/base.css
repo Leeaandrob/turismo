@@ -56,7 +56,8 @@ body
     margin-left:230px;
 }
 
-input[type="text"]
+input[type="text"],
+input[type="email"]
 {
     height:30px;   
 }

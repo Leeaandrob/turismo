@@ -11,7 +11,7 @@ SITUACAO = (
         )
 
 class Grupo(models.Model):
-    name = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100)
     destino = models.ForeignKey(Destino)
     partida = models.CharField(max_length=10)
     chegada = models.CharField(max_length=10)

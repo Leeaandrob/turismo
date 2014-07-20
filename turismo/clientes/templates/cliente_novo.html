@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<form class="form-inline" method="POST" >
+    {% csrf_token %}            
+    <p><label>{{form.nome.label}} :</label>{{form.nome}}</p>
+    <p><label>{{form.nascimento.label}} :</label>{{form.nascimento}}</p>
+    <p><label>{{form.cpf.label}}</label>{{form.cpf}}</p>
+    <p><label>{{form.rg.label}}</label>{{form.rg}}</p>
+    <p><label>{{form.orgao.label}}</label>{{form.orgao}}</p>
+    <p><label>{{form.endereco.label}}</label>{{form.endereco}}</p>
+    <p><label>{{form.bairro.label}}</label>{{form.bairro}}</p>
+    <p><label>{{form.cidade.label}}</label>{{form.cidade}}</p>
+    <p><label>{{form.estado.label}}</label>{{form.estado}}</p>
+    <p><label>{{form.cep.label}}</label>{{form.cep}}</p>
+    <p><label>{{form.tel01.label}}</label>{{form.tel01}}</p>
+    <p><label>{{form.tel02.label}}</label>{{form.tel02}}</p>
+    <p><label>{{form.email.label}}</label>{{form.email}}</p>
+
+    <p><button type="submit" class="btn btn-success">Salvar</button></p>
+</form> 
+
+ <script type="text/javascript">
+    $('#id_partida').datepicker({
+        autoclose: true,
+        language: 'pt-BR',
+        format: "dd/mm/yyyy"
+    });
+
+    $('#id_chegada').datepicker({
+        autoclose: true,
+        language: 'pt-BR',
+        format: "dd/mm/yyyy"
+    });
+ </script>
+{%endblock%}
+

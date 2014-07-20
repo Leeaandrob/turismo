@@ -2,7 +2,7 @@
 {%block content%}
 <form class="form-inline" method="POST" >
 	{% csrf_token %}			
-	<p><label>{{form.name.label}} :</label>{{form.name}}</p>
+	<p><label>{{form.nome.label}} :</label>{{form.nome}}</p>
 	<p><button type="submit" class="btn btn-success">Salvar</button></p>
 </form>	
 
