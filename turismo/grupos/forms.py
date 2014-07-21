@@ -8,4 +8,4 @@ class GrupoForm(forms.ModelForm):
     class Meta:
         model = Grupo
 
-        widgets = { 'pessoas': forms.CheckboxSelectMultiple(attrs={'class':'checkbox'}),}
+        widgets = { 'clientes': forms.CheckboxSelectMultiple(attrs={'class':'checkbox'}),}

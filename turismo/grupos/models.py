@@ -18,5 +18,5 @@ class Grupo(models.Model):
     chegada = models.CharField(max_length=10)
     numpessoas = models.CharField(max_length=3)
     situacao = models.CharField(max_length=1,choices=SITUACAO)
-    pessoas = models.ManyToManyField(Cliente,verbose_name="Pessoas Listadas", blank=True)
+    clientes = models.ManyToManyField(Cliente,verbose_name="Pessoas Listadas", blank=True)
 

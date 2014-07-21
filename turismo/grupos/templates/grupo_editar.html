@@ -23,9 +23,11 @@ Editar
             <p><label>{{form.situacao.label}}</label>{{form.situacao}}</p>
       </div>
        <div class="tab-pane" id="pessoas">
-
+            {% for p in clientes_dentro %}
+              <a href="{% url 'grupos:remover_do_grupo' grupo_id=grupo.id cliente_id=p.id %}">{{p}}</a><br/>
+            {% endfor %}
             <br/>
-            {% for p in pessoas %}
+            {% for p in clientes_fora %}
               <a href="{% url 'grupos:inserir_ao_grupo' grupo_id=grupo.id cliente_id=p.id %}">{{p}}</a><br/>
             {% endfor %}
 
