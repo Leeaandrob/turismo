@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from turismo.grupos.forms import GrupoForm
 from turismo.grupos.models import Grupo
+
+from turismo.clientes.models import Cliente
 # Create your views here.
 
 def grupo_create(request):
@@ -38,13 +40,20 @@ def edit_grupo(request,grupo):
     if form.is_valid():
         grupo = form.save(commit=False)
         grupo.save()
+        form.save_m2m()
         return HttpResponseRedirect('/grupos/lista')
     else:
-        return render(request,'grupo_editar.html',{'form':form})
+        return render(request,'grupo_editar.html',{'form':form,'pessoas':Cliente.objects.all()})
 
 def request_grupo(request,grupo):
     '''
         @request_funcao: View para obter os dados de um determinado funcao
     '''
     form = GrupoForm(instance=grupo)
-    return render(request, 'grupo_editar.html', {'form': form})
+    return render(request, 'grupo_editar.html',{'form':form,'grupo':grupo,'pessoas':Cliente.objects.all()})
+
+def inserir_ao_grupo(request,grupo_id,cliente_id):
+    cliente = get_object_or_404(Cliente,id=cliente_id)
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    grupo.pessoas.add(cliente)
+    raise Exception(grupo.pessoas.all())

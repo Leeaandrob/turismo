@@ -3,8 +3,8 @@
 
 <form class="form-inline" method="POST" >
 	{% csrf_token %}			
-	<p><label>{{form.nome.label}} :</label>{{form.nome}}</p>
-	<p><label>{{form.destino.label}} :</label>{{form.destino}}</p>
+	<p><label>{{form.nome.label}} :</label>{{form.nome}}{{form.nome.errors}}</p>
+	<p><label>{{form.destino.label}} :</label>{{form.destino}}{{form.destino.errors}}</p>
 	<p><label>{{form.partida.label}} : </label>{{form.partida}}</p>
 	<p><label>{{form.chegada.label}} : </label>{{form.chegada}}</p>
 	<p><label>{{form.numpessoas.label}} : </label>{{form.numpessoas}}</p>

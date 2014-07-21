@@ -17,3 +17,6 @@ class Cliente(models.Model):
     tel01 = models.CharField(max_length=10)
     tel02 = models.CharField(max_length=10)
     email = models.EmailField(max_length=25)
+
+    def __unicode__(self):
+        return unicode(self.nome)

@@ -1,6 +1,7 @@
 #coding: utf-8
 from django.db import models
 from turismo.destinos.models import Destino
+from turismo.clientes.models import Cliente
 # Create your models here.
 
 
@@ -17,4 +18,5 @@ class Grupo(models.Model):
     chegada = models.CharField(max_length=10)
     numpessoas = models.CharField(max_length=3)
     situacao = models.CharField(max_length=1,choices=SITUACAO)
+    pessoas = models.ManyToManyField(Cliente,verbose_name="Pessoas Listadas", blank=True)
 
