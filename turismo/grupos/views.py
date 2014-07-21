@@ -61,9 +61,51 @@ def inserir_ao_grupo(request,grupo_id,cliente_id):
     grupo = get_object_or_404(Grupo,id=grupo_id)
     grupo.clientes.add(cliente)
     return HttpResponseRedirect(r('grupos:grupo_edit', args=[grupo.id]))
+    #return HttpResponseRedirect(r('grupos:pessoas_grupo', args=[grupo.id]))
 
 def remover_do_grupo(request,grupo_id,cliente_id):
     cliente = get_object_or_404(Cliente,id=cliente_id)
     grupo = get_object_or_404(Grupo,id=grupo_id)
     grupo.clientes.remove(cliente)
     return HttpResponseRedirect(r('grupos:grupo_edit', args=[grupo.id]))
+    #return HttpResponseRedirect(r('grupos:pessoas_grupo', args=[grupo.id]))
+
+
+
+def add_grupo(request):
+    if request.is_ajax() and request.POST :
+        # do some stuff        
+        grupo = Grupo.objects.get(id=request.POST['grupo_id'])
+        cliente = Cliente.objects.get(id=request.POST['cliente_id'])
+        grupo.clientes.add(cliente)
+        form = GrupoForm(instance=grupo)
+        return render(request, 'grupo_editar.html',
+            {'form':form,'grupo':grupo,
+            'clientes_dentro':grupo.clientes.all(),
+            'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+    else:
+        raise Http404r('grupos:grupo_edit', args=[grupo.id])
+def rm_grupo(request):
+    if request.is_ajax() and request.POST :
+        # do some stuff        
+        grupo = Grupo.objects.get(id=request.POST['grupo_id'])
+        cliente = Cliente.objects.get(id=request.POST['cliente_id'])
+        grupo.clientes.remove(cliente)
+        
+        form = GrupoForm(instance=grupo)
+        return render(request, 'grupo_editar.html',
+            {'form':form,'grupo':grupo,
+            'clientes_dentro':grupo.clientes.all(),
+            'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+    else:
+        raise Http404
+
+
+
+
+def pessoas_grupo(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    return render(request, 'pessoas.html',
+        {'grupo':grupo,
+        'clientes_dentro':grupo.clientes.all(),
+        'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
