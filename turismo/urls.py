@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     url(r'^grupos/',include('turismo.grupos.urls', namespace='grupos')),
     url(r'^clientes/',include('turismo.clientes.urls',namespace='clientes')),
     url(r'^colaboradores/',include('turismo.colaboradores.urls',namespace='colaboradores')),
-    url(r'^servicos/',include('turismo.servicos.urls',namespace='servicos'))
+    url(r'^servicos/',include('turismo.servicos.urls',namespace='servicos')),
 )

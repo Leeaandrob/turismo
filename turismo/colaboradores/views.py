@@ -19,3 +19,22 @@ def colaborador_create(request):
 
 def colaborador_lista(request):
     return render(request, 'colaborador_lista.html',{'colaboradores':Colaborador.objects.all()})
+
+def colaborador_edit(request,colaborador_id):
+    colaborador = get_object_or_404(Colaborador,id=colaborador_id)
+    if request.method == 'POST':
+        return edit_colaborador(request,colaborador)
+    else:
+        return request_grupo(request,cliente)
+def edit_colaborador(request,colaborador):
+    form = ColaboradorForm(request.POST,instance=colaborador)
+    if form.is_valid():
+        colaborador = form.save(commit=False)
+        colaborador.save()
+        return HttpResponseRedirect('/colaboradores/lista')
+    else:
+        return render(request,'colaborador_editar.html',{'form':form})
+
+def request_colaborador(request,colaborador):
+    form = ColaboradorForm(instance=colaborador)
+    return render(request,'colaborador_editar.html',{'form':form})
