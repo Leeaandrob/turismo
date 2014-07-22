@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'turismo.grupos',
     'turismo.clientes',
     'turismo.colaboradores',
+    'turismo.servicos',
 )
 
 MIDDLEWARE_CLASSES = (
