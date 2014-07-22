@@ -79,7 +79,7 @@ def add_grupo(request):
         cliente = Cliente.objects.get(id=request.POST['cliente_id'])
         grupo.clientes.add(cliente)
         form = GrupoForm(instance=grupo)
-        return render(request, 'grupo_editar.html',
+        return render(request, 'pessoas.html',
             {'form':form,'grupo':grupo,
             'clientes_dentro':grupo.clientes.all(),
             'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
@@ -93,7 +93,7 @@ def rm_grupo(request):
         grupo.clientes.remove(cliente)
         
         form = GrupoForm(instance=grupo)
-        return render(request, 'grupo_editar.html',
+        return render(request, 'pessoas.html',
             {'form':form,'grupo':grupo,
             'clientes_dentro':grupo.clientes.all(),
             'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
@@ -103,7 +103,7 @@ def rm_grupo(request):
 
 
 
-def pessoas_grupo(request,grupo_id):
+def clientes_grupo(request,grupo_id):
     grupo = get_object_or_404(Grupo,id=grupo_id)
     return render(request, 'pessoas.html',
         {'grupo':grupo,
