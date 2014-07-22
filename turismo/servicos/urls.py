@@ -4,7 +4,7 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('turismo.servicos.views',
-    url(r'^novo/$', 'servicos_create', name='servicos_create'),
-    url(r'^editar/(?P<servicos_id>\d+)/$', 'servicos_edit', name='servicos_edit'),
-    url(r'^lista/$','servicos_lista', name='servicos_lista'),
+    url(r'^novo/$', 'servico_create', name='servico_create'),
+    url(r'^editar/(?P<servico_id>\d+)/$', 'servico_edit', name='servico_edit'),
+    url(r'^lista/$','servico_lista', name='servico_lista'),
 )

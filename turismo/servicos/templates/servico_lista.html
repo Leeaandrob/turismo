@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Editar</th>
+            <th>Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for s in servicos%}
+            <tr>
+                <td class="a-table">
+                <a href="#">Editar</a></td>
+                <td>{{s.nome}}</td>
+            </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+
+{%endblock%}
