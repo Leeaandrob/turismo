@@ -41,7 +41,6 @@ def edit_grupo(request,grupo):
     if form.is_valid():
         grupo = form.save(commit=False)
         grupo.save()
-        form.save_m2m()
         return HttpResponseRedirect('/grupos/lista')
     else:
         return render(request,'grupo_editar.html',{'form':form})

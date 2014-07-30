@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {%block content%}
-
+<a class="btn btn-warning" href="{% url 'servicos:servico_create' %}">Novo</a>
 <table class="table">
     <thead>
         <tr>
@@ -12,7 +12,7 @@
         {%for s in servicos%}
             <tr>
                 <td class="a-table">
-                <a href="#">Editar</a></td>
+                <a href="{% url 'servicos:servico_edit' servico_id=s.id %}">Editar</a></td>
                 <td>{{s.nome}}</td>
             </tr>
         {%endfor%}

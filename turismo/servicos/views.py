@@ -23,7 +23,7 @@ def servico_lista(request):
 
 def servico_edit(request,servico_id):
 
-    servico = get_object_or_404(Destino,id=servico_id)
+    servico = get_object_or_404(Servico,id=servico_id)
     if request.method == 'POST':
         return edit_servico(request,servico)
     else:

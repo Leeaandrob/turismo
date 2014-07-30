@@ -38,11 +38,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cropper',
+    'imagekit',
     'turismo.destinos',
     'turismo.grupos',
     'turismo.clientes',
     'turismo.colaboradores',
     'turismo.servicos',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,5 +107,7 @@ STATICFILES_DIRS = (
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    #'django.template.loaders.aluno.Loader',
 )
+
+#MEDIA_ROOT = 'django-image-cropper/cropper/media'
+IMAGEKIT_DEFAULT_IMAGE_CACHE_BACKEND = 'imagekit.imagecache.NonValidatingImageCacheBackend'

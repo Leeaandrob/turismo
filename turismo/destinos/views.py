@@ -8,8 +8,8 @@ from turismo.destinos.forms import DestinoForm
 from turismo.destinos.models import Destino
 # Create your views here.
 
-def destino_create(request):
-	return render(request,'destino_novo.html')
+#def destino_create(request):
+#	return render(request,'destino_novo.html')
 
 def destino_create(request):
 	form = DestinoForm(request.POST)

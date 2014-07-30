@@ -2,7 +2,6 @@
 <head>
     <title>Turismo</title>
 
-    <script src="{{ STATIC_URL }}js/jquery-2.0.0.min.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
     <link href="{{ STATIC_URL }}css/datepicker.css" rel="stylesheet" type="text/css" />   
     <script src="{{ STATIC_URL }}js/bootstrap-datepicker.js" type="text/javascript"></script>
@@ -22,11 +21,11 @@
             <hr size="5" noshade align="right" style="background:black; margin-top:-30px;"/>
             <nav class="menu" id="cbp-spmenu-s1">
 			    <h3>Menu</h3>
-			   	<a href="{% url 'destinos:destino_create' %}">Destinos</a>
-                <a href="{% url 'grupos:grupo_create' %}">Grupos</a>
-                <a href="{% url 'clientes:cliente_create' %}">Clientes</a>
-                <a href="{% url 'colaboradores:colaborador_create' %}">Colaboradores</a>
-                <a href="{% url 'servicos:servico_create' %}">Serviços</a>
+			   	<a href="{% url 'destinos:destino_lista' %}">Destinos</a>
+                <a href="{% url 'grupos:grupo_lista' %}">Grupos</a>
+                <a href="{% url 'clientes:cliente_lista' %}">Clientes</a>
+                <a href="{% url 'colaboradores:colaborador_lista' %}">Colaboradores</a>
+                <a href="{% url 'servicos:servico_lista' %}">Serviços</a>
 		    </nav>
 		</div>
         <div id="centro">
@@ -35,7 +34,7 @@
         </div>
 
 	    <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
-	    <script src="{{ STATIC_URL }}js/jquery-2.0.0.min.js" type="text/javascript"></script>
+	    <script src="{{ STATIC_URL }}js/jquery-2.1.1.min.js" type="text/javascript"></script>
     	<script src="{{ STATIC_URL }}js/classie.js" type="text/javascript"></script>
 
 
