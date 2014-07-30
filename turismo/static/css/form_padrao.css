@@ -8,3 +8,12 @@ label
 	width:100px;
 	color:black;
 }
+#id_servicos label
+{
+	width:300px;
+}
+.errorList
+{
+	float:right;
+	margin-right: 500px;
+}

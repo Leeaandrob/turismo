@@ -7,3 +7,5 @@ from django.core.exceptions import ValidationError
 class ColaboradorForm(forms.ModelForm):
     class Meta:
         model = Colaborador
+
+        widgets = { 'servicos': forms.CheckboxSelectMultiple(attrs={'class':'form-inline'}),}

@@ -25,12 +25,13 @@ def colaborador_edit(request,colaborador_id):
     if request.method == 'POST':
         return edit_colaborador(request,colaborador)
     else:
-        return request_grupo(request,cliente)
+        return request_colaborador(request,colaborador)
 def edit_colaborador(request,colaborador):
     form = ColaboradorForm(request.POST,instance=colaborador)
     if form.is_valid():
         colaborador = form.save(commit=False)
         colaborador.save()
+        form.save_m2m()
         return HttpResponseRedirect('/colaboradores/lista')
     else:
         return render(request,'colaborador_editar.html',{'form':form})

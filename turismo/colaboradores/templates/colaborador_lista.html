@@ -12,7 +12,7 @@
         {%for c in colaboradores%}
             <tr>
                 <td class="a-table">
-                <a href="#">Editar</a></td>
+                <a href="{% url 'colaboradores:colaborador_edit' colaborador_id=c.id %}">Editar</a></td>
                 <td>{{c.nome}}</td>
             </tr>
         {%endfor%}

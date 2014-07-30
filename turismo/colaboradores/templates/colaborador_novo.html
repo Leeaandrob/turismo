@@ -2,16 +2,17 @@
 {%block content%}
 
 <link href="{{ STATIC_URL }}css/jquery.Jcrop.min.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}css/principal" rel="stylesheet">
 <script src="{{ STATIC_URL }}js/jquery.Jcrop.min.js"></script>
 <script src="{{ STATIC_URL }}js/picture.js"></script>
 
 <form class="form-inline" method="POST" >
     {% csrf_token %}            
-    <p><label>{{form.nome.label}} :</label>{{form.nome}}</p>
+    {{form.as_p}}
     <p><button type="submit" class="btn btn-success">Salvar</button></p>
 </form> 
 
-<img src="{% my_favorite_model_instance.my_image_cropped.url %}">
+
 
 <!--
 <form enctype="multipart/form-data" method="post" action="{% url 'colaboradores:upload_picture' %}" id="picture-upload-form">
