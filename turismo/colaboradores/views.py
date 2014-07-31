@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from turismo.colaboradores.forms import ColaboradorForm
 from turismo.colaboradores.models import Colaborador
+from django.conf import settings as django_settings
 
 # Create your views here.
 

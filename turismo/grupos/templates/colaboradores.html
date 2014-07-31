@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{%block jquery%}
+//Adicionando ao grupo
+
+$(".add_grupo").click(function(e){
+    e.preventDefault();
+    $id_colaborador = this.id
+    
+    $.ajax({
+        type:"POST",
+        cache: false,
+        url: "{% url 'grupos:add_colaborador_grupo' %}",
+        data: {
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        grupo_id: {{grupo.id}},
+        colaborador_id: $id_colaborador,
+    },
+        
+        success:function(data){
+            $( "body" ).html(data);
+        },
+    error: function(rs, e){
+        alert(rs);
+},
+
+    });
+});
+
+
+//Removendo disciplinas
+$(".rm_grupo").click(function(e){
+    e.preventDefault();
+    $id_colaborador = this.id
+    
+    $.ajax({
+        type:"POST",
+        cache: false,
+        url: "{% url 'grupos:rm_colaborador_grupo' %}",
+        data: {
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        grupo_id: {{grupo.id}},
+        colaborador_id: $id_colaborador,
+    },
+        
+        success:function(data){
+            $( "body" ).html(data);
+        },
+    error: function(rs, e){
+        alert(rs);
+},
+
+    });
+});
+
+{%endblock%}
+
+
+{%block content%}
+{%include 'menu_grupo.html'%}
+
+
+
+
+            Colaboradores do grupo<br/>
+            
+
+           {% for d in colaboradores_dentro %}
+
+            <form id="{{d.id}}" method='POST'>
+                {%csrf_token%}
+                <input class ="rm_grupo btn btn-success" type="submit" value='{{d.nome}}' id='{{d.id}}' style="width:100px"/>
+            </form>
+
+            {% endfor %}
+            <br/>
+            <!--
+            Clientes que não estão no grupo<br/>
+            {% for p in clientes_fora %}
+              <a class="add_grupo btn btn-danger" href="{% url 'grupos:inserir_ao_grupo' grupo_id=grupo.id cliente_id=p.id %}"
+              value='{{p.nome}}' id='{{p.id}}'>{{p}}</a><br/><br/>
+            {% endfor %}-->
+            {%for d in colaboradores_fora%}
+
+            <form id="{{d.id}}" method='POST'>
+                {%csrf_token%}
+                <input class ="add_grupo btn btn-danger" type="submit" value='{{d.nome}}' id='{{d.id}}' style="width:100px"/>
+            </form>
+            {%endfor%}
+
+
+
+{%endblock%}

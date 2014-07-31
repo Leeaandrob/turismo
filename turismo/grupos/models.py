@@ -2,6 +2,7 @@
 from django.db import models
 from turismo.destinos.models import Destino
 from turismo.clientes.models import Cliente
+from turismo.colaboradores.models import Colaborador
 # Create your models here.
 
 
@@ -19,4 +20,5 @@ class Grupo(models.Model):
     numpessoas = models.CharField(max_length=3)
     situacao = models.CharField(max_length=1,choices=SITUACAO)
     clientes = models.ManyToManyField(Cliente,verbose_name="Pessoas Listadas", blank=True)
+    colaboradores = models.ManyToManyField(Colaborador,verbose_name="Colaboradores", blank=True)
 

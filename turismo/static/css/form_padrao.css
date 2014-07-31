@@ -17,3 +17,12 @@ label
 	float:right;
 	margin-right: 500px;
 }
+.td-tam
+{
+	width:100px;
+}
+
+#hidden-table-info,#hidden-table-info2
+{
+	width:450px;
+}

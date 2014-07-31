@@ -7,6 +7,7 @@ from turismo.grupos.models import Grupo
 from django.core.urlresolvers import reverse as r
 
 from turismo.clientes.models import Cliente
+from turismo.colaboradores.models import Colaborador
 # Create your views here.
 
 def grupo_create(request):
@@ -51,9 +52,7 @@ def request_grupo(request,grupo):
     '''
     form = GrupoForm(instance=grupo)
     return render(request, 'grupo_editar.html',
-        {'form':form,'grupo':grupo,
-        'clientes_dentro':grupo.clientes.all(),
-        'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+        {'form':form,'grupo':grupo})
 
 def inserir_ao_grupo(request,grupo_id,cliente_id):
     cliente = get_object_or_404(Cliente,id=cliente_id)
@@ -99,12 +98,48 @@ def rm_grupo(request):
     else:
         raise Http404
 
-
-
-
 def clientes_grupo(request,grupo_id):
     grupo = get_object_or_404(Grupo,id=grupo_id)
     return render(request, 'pessoas.html',
         {'grupo':grupo,
         'clientes_dentro':grupo.clientes.all(),
         'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+
+
+
+
+def add_colaborador_grupo(request):
+    if request.is_ajax() and request.POST :
+        # do some stuff        
+        grupo = Grupo.objects.get(id=request.POST['grupo_id'])
+        colaborador = Colaborador.objects.get(id=request.POST['colaborador_id'])
+        grupo.colaboradores.add(colaborador)
+        form = GrupoForm(instance=grupo)
+        return render(request, 'colaboradores.html',
+            {'form':form,'grupo':grupo,
+            'colaboradores_dentro':grupo.colaboradores.all(),
+            'colaboradores_fora':Colaborador.objects.all().exclude(id__in=grupo.colaboradores.all())})
+    else:
+        raise Http404r('grupos:grupo_edit', args=[grupo.id])
+
+def rm_colaborador_grupo(request):
+    if request.is_ajax() and request.POST :
+        # do some stuff        
+        grupo = Grupo.objects.get(id=request.POST['grupo_id'])
+        colaborador = Colaborador.objects.get(id=request.POST['colaborador_id'])
+        grupo.colaboradores.remove(colaborador)
+        
+        form = GrupoForm(instance=grupo)
+        return render(request, 'colaboradores.html',
+            {'form':form,'grupo':grupo,
+            'colaboradores_dentro':grupo.colaboradores.all(),
+            'colaboradores_fora':Colaborador.objects.all().exclude(id__in=grupo.colaboradores.all())})
+    else:
+        raise Http404
+        
+def colaboradores_grupo(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    return render(request, 'colaboradores.html',
+        {'grupo':grupo,
+        'colaboradores_dentro':grupo.colaboradores.all(),
+        'colaboradores_fora':Colaborador.objects.all().exclude(id__in=grupo.colaboradores.all())})

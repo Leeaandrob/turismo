@@ -9,7 +9,14 @@ urlpatterns = patterns('turismo.grupos.views',
 	url(r'^lista/$','grupo_lista', name='grupo_lista'),
     url(r'^inserir_ao_grupo/(?P<grupo_id>\d+)/(?P<cliente_id>\d+)/$','inserir_ao_grupo', name='inserir_ao_grupo'),
     url(r'^remover_do_grupo/(?P<grupo_id>\d+)/(?P<cliente_id>\d+)/$','remover_do_grupo', name='remover_do_grupo'),
+    
     url(r'^clientes/(?P<grupo_id>\d+)/$','clientes_grupo', name='clientes_grupo'),
     url(r'^add_grupo/$','add_grupo', name='add_grupo'),
     url(r'^rm_grupo/$','rm_grupo', name='rm_grupo'),
+
+    url(r'^colaboradores/(?P<grupo_id>\d+)/$','colaboradores_grupo', name='colaboradores_grupo'),
+    url(r'^add_colaborador_grupo/$','add_colaborador_grupo', name='add_colaborador_grupo'),
+    url(r'^rm_colaborador_grupo/$','rm_colaborador_grupo', name='rm_colaborador_grupo'),
+
+
 )
