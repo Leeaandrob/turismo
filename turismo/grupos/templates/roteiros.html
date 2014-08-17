@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<form class="form-inline" method="POST" >
+	{% csrf_token %}			
+	<p><label>{{form.titulo.label}} :</label>{{form.titulo}}</p>
+	<p><label>{{form.descricao.label}} :</label>{{form.descricao}}</p>
+	<p><button type="submit" class="btn btn-success">Salvar</button></p>
+</form>	
+
+<br/>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Editar</th>
+			<th>Título</th>
+			<th>Descriçao</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for r in roteiros%}
+			<tr>
+				<td class="a-table">
+				<a href="">Editar</a></td>
+				<td>{{r.titulo}}</td>
+				<td>{{r.descricao}}</td>
+			</tr>
+		{%endfor%}
+	</tbody>
+</table>
+{%endblock%}
+

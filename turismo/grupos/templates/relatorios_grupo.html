@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{%block content%}
+{%include 'menu_grupo.html'%}
+
+<div>
+<h3>Relatório somente com o telefone</h3>
+<a class="btn btn-info" href="{% url 'grupos:relatorio_clientes_telefone' grupo_id=grupo.id%}">Gerar</a>
+</div>
+
+<div>
+<h3>Relatório com RG e Telefone</h3>
+<a class="btn btn-info" href="{% url 'grupos:relatorio_clientes_rg' grupo_id=grupo.id%}">Gerar</a>
+</div>
+
+
+
+
+{%endblock%}

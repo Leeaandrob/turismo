@@ -22,3 +22,8 @@ class Grupo(models.Model):
     clientes = models.ManyToManyField(Cliente,verbose_name="Pessoas Listadas", blank=True)
     colaboradores = models.ManyToManyField(Colaborador,verbose_name="Colaboradores", blank=True)
 
+class Roteiro(models.Model):
+    titulo = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=500)
+    grupo = models.ForeignKey(Grupo)
+

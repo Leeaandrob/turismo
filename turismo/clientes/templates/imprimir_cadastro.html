@@ -1,0 +1,37 @@
+
+<link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="{{ STATIC_URL }}css/relatorio_cliente.css" rel="stylesheet" type="text/css" />
+<script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
+
+<div id="relatorio">
+
+ <center><h2>Cadastro do cliente</h2></center>
+<h4>
+<div id="centro">
+ Nome: {{cliente.nome}}<br/><br/>
+
+ Data de Nascimento:{{cliente.nascimento}}<br/><br/>
+
+ CPF: {{cliente.cpf}}<br/><br/>
+
+ RG: {{cliente.rg}}<br/><br/>
+
+ Órgão Expedidor: {{cliente.orgao}}<br/><br/>
+
+ Endereço: {{cliente.endereco}}<br/><br/>
+
+ Bairro: {{cliente.bairro}}<br/><br/>
+
+ Cidade: {{cliente.cidade}}<br/><br/>
+
+ Estado: {{cliente.estado}}<br/><br/>
+
+ CEP: {{cliente.cep}}<br/><br/>
+ Telefone 01: {{cliente.tel01}<br/><br/>
+ Telefone 02: {{cliente.tel02}}<br/><br/>
+ Email: {{cliente.email}}<br/><br/>
+ </div>
+
+ </h4>
+
+</div>

@@ -1,0 +1,13 @@
+#relatorio
+{
+	width:800px;
+	height:600px;
+	margin:auto;
+	border: 3px solid #666666;
+	border-radius: 20px;
+}
+
+#centro
+{
+	padding-left: 20px;
+}

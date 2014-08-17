@@ -2,8 +2,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from turismo.grupos.forms import GrupoForm
-from turismo.grupos.models import Grupo
+from turismo.grupos.forms import GrupoForm,RoteiroForm
+from turismo.grupos.models import Grupo,Roteiro
 from django.core.urlresolvers import reverse as r
 
 from turismo.clientes.models import Cliente
@@ -11,10 +11,6 @@ from turismo.colaboradores.models import Colaborador
 # Create your views here.
 
 def grupo_create(request):
-	return render(request,'grupo_novo.html')
-
-def grupo_create(request):
-
 	form = GrupoForm(request.POST)
 	if not form.is_valid():
 		return render(request, 'grupo_novo.html', {'form': form})
@@ -143,3 +139,58 @@ def colaboradores_grupo(request,grupo_id):
         {'grupo':grupo,
         'colaboradores_dentro':grupo.colaboradores.all(),
         'colaboradores_fora':Colaborador.objects.all().exclude(id__in=grupo.colaboradores.all())})
+
+
+def roteiro_create(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    form = RoteiroForm(instance=grupo)
+    if not form.is_valid():
+        return render(request, 'roteiros.html', {'form': form,'roteiros':Roteiro.objects.all()})
+    obj = form.save()
+    return HttpResponseRedirect("roteiros.html")
+
+def roteiro_edit(request,roteiro_id):
+    roteiro = get_object_or_404(Roteiro,id=roteiro_id)
+    if request.method == 'POST':
+        return edit_roteiro(request,roteiro)
+    else:
+        return request_roteiro(request,roteiro)
+
+def edit_roteiro(request,grupo):
+    '''
+        @edit_funcao: View para alterar os dados de um funcao
+    '''
+    form = RoteiroForm(request.POST,instance=roteiro)
+    if form.is_valid():
+        roteiro = form.save(commit=False)
+        roteiro.save()
+        return HttpResponseRedirect('roteiros.html')
+    else:
+        return render(request,'roteiro_editar.html',{'form':form})
+
+def request_roteiro(request,roteiro):
+    '''
+        @request_funcao: View para obter os dados de um determinado funcao
+    '''
+    form = RoteiroForm(instance=grupo)
+    return render(request, 'roteiro_editar.html',
+        {'form':form,'roteiro':roteiro})
+
+def roteiro_lista(request,grupo_id):
+    return render(request, 'roteiro_lista.html',{'roteiros':Roteiro.objects.all()})
+
+
+
+def relatorio_grupo(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    return render(request, 'relatorios_grupo.html',{'grupo':grupo})
+
+def relatorio_clientes_telefone(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    return render(request, 'relatorio_telefone.html',
+        {'grupo':grupo,'clientes_dentro':grupo.clientes.all()})
+
+def relatorio_clientes_rg(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    return render(request, 'relatorio_rg.html',
+        {'grupo':grupo,'clientes_dentro':grupo.clientes.all()})

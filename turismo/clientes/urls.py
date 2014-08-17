@@ -7,4 +7,5 @@ urlpatterns = patterns('turismo.clientes.views',
     url(r'^novo/$', 'cliente_create', name='cliente_create'),
     url(r'^editar/(?P<cliente_id>\d+)/$', 'cliente_edit', name='cliente_edit'),
     url(r'^lista/$','cliente_lista', name='cliente_lista'),
+    url(r'^relatorio/(?P<cliente_id>\d+)/$', 'relatorio_cliente', name='relatorio_cliente'),
 )

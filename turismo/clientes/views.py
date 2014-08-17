@@ -37,4 +37,9 @@ def edit_grupo(request,cliente):
 
 def request_grupo(request,cliente):
     form = ClienteForm(instance=cliente)
-    return render(request,'cliente_editar.html',{'form':form})
+    return render(request,'cliente_editar.html',{'form':form,'cliente':cliente})
+
+def relatorio_cliente(request,cliente_id):
+    cliente = get_object_or_404(Cliente,id=cliente_id)
+    return render(request,'imprimir_cadastro.html',{'cliente':cliente})
+

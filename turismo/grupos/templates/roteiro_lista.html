@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{%block content%}
+<table class="table">
+	<thead>
+		<tr>
+			<th>Editar</th>
+			<th>Nome</th>
+			<th>Destino</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for r in roteiros%}
+			<tr>
+				<td class="a-table">
+				<a href="">Editar</a></td>
+				<td>{{r.titulo}}</td>
+				<td>{{r.descricao}}</td>
+			</tr>
+		{%endfor%}
+	</tbody>
+</table>
+
+
+{%endblock%}

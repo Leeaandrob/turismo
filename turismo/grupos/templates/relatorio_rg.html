@@ -1,0 +1,28 @@
+
+<link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
+<h1>Listagem de Clientes</h1>
+<h2>Grupo: {{grupo.nome}}</h2>
+<h4>Destino: {{grupo.destino}} </h4>
+<h4>Período: {{grupo.partida}} à {{grupo.chegada}}</h4>
+
+<table class="table">
+      <thead>
+        <tr>
+            <th>Nome</th>
+            <th>RG</th>
+            <th>Telefone</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+        {% for d in clientes_dentro %}
+              <tr>
+                <td>{{d.nome}}</td>
+                <td>{{d.rg}}</td>
+                <td>{{d.tel01}}</td>
+              </tr>
+        {%endfor%}
+      
+      </tbody>
+ </table>

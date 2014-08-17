@@ -1,8 +1,10 @@
 
     <ul class="nav nav-pills">
-      <a class="btn btn-primary" href="{% url 'grupos:grupo_edit' grupo_id=grupo.id %}">Dados do grupo</a></li>
-      <a class="btn btn-warning" href="{% url 'grupos:clientes_grupo' grupo_id=grupo.id%}">Pessoas</a></li>
-      <a class="btn btn-success" href="{% url 'grupos:colaboradores_grupo' grupo_id=grupo.id %}">Colaboradores</a></li>
-      <a class="btn btn-danger" href="#">Mensagem</a></li>
-      <a class="btn btn-info" href="#">Relatórios</a></li>
+      <a class="btn btn-primary" href="{% url 'grupos:grupo_edit' grupo_id=grupo.id %}">Dados do grupo</a>
+      <a class="btn btn-warning" href="{% url 'grupos:clientes_grupo' grupo_id=grupo.id%}">Pessoas</a>
+      <a class="btn btn-success" href="{% url 'grupos:colaboradores_grupo' grupo_id=grupo.id %}">Colaboradores</a>
+      <a class="btn btn-info" href="{% url 'grupos:roteiro_create' grupo_id=grupo.id%}">Roteiro</a>
+      <a class="btn btn-danger" href="#">Mensagem</a>
+      <a class="btn btn-info" href="{% url 'grupos:relatorio_grupo' grupo_id=grupo.id%}">Relatórios</a>
+      <a class="btn btn-danger" href="">Despesas</a>
     </ul>
