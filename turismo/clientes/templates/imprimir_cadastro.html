@@ -8,28 +8,43 @@
  <center><h2>Cadastro do cliente</h2></center>
 <h4>
 <div id="centro">
- Nome: {{cliente.nome}}<br/><br/>
+ <label>Nome: {{cliente.nome}}</label><br/>
+ <label>Data de Nascimento:{{cliente.nascimento}}</label><br/>
+ <label>CPF: {{cliente.cpf}}</label><br/>
+ <label>RG: {{cliente.rg}}</label><br/>
+ <label>Órgão Expedidor: {{cliente.orgao}}</label><br/>
+ <label>Endereço: {{cliente.endereco}}</label><br/>
+ <label>Bairro: {{cliente.bairro}}</label><br/>
+ <label>Cidade: {{cliente.cidade}}</label><br/>
+ <label>Estado: {{cliente.estado}}</label><br/>
+ <label>CEP: {{cliente.cep}}</label><br/>
+ <label>Telefone 01: {{cliente.tel01}}</label><br/>
+ <label>Telefone 02: {{cliente.tel02}}</label><br/>
+ <label>Email: {{cliente.email}}</label><br/>
 
- Data de Nascimento:{{cliente.nascimento}}<br/><br/>
+ --------------------------------------------------------------------------------------------------------------------------------
+  <center><h2>Histórico</h2></center>
 
- CPF: {{cliente.cpf}}<br/><br/>
-
- RG: {{cliente.rg}}<br/><br/>
-
- Órgão Expedidor: {{cliente.orgao}}<br/><br/>
-
- Endereço: {{cliente.endereco}}<br/><br/>
-
- Bairro: {{cliente.bairro}}<br/><br/>
-
- Cidade: {{cliente.cidade}}<br/><br/>
-
- Estado: {{cliente.estado}}<br/><br/>
-
- CEP: {{cliente.cep}}<br/><br/>
- Telefone 01: {{cliente.tel01}<br/><br/>
- Telefone 02: {{cliente.tel02}}<br/><br/>
- Email: {{cliente.email}}<br/><br/>
+  <table class="table">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Destino</th>
+			<th>Partida</th>
+			<th>Chegada</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for g in grupos%}
+			<tr>
+				<td>{{g.nome}}</td>
+				<td>{{g.destino}}</td>
+				<td>{{g.partida}}</td>
+				<td>{{g.chegada}}</td>
+			</tr>
+		{%endfor%}
+	</tbody>
+</table>
  </div>
 
  </h4>

@@ -8,3 +8,5 @@ from croppable.utils import get_crop_processor
 class Destino(models.Model):
     nome = models.CharField(max_length=100)
     
+    def __unicode__(self):
+        return unicode(self.nome)

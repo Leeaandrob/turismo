@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'cropper',
     'imagekit',
+    'turismo.core',
     'turismo.destinos',
     'turismo.grupos',
     'turismo.clientes',

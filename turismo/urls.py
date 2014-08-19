@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'turismo.core.views.home', name='home'),
     url(r'^destinos/',include('turismo.destinos.urls', namespace='destinos')),
     url(r'^grupos/',include('turismo.grupos.urls', namespace='grupos')),
     url(r'^clientes/',include('turismo.clientes.urls',namespace='clientes')),

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from turismo.clientes.forms import ClienteForm
 from turismo.clientes.models import Cliente
+from turismo.grupos.models import Grupo
 
 # Create your views here.
 
@@ -41,5 +42,6 @@ def request_grupo(request,cliente):
 
 def relatorio_cliente(request,cliente_id):
     cliente = get_object_or_404(Cliente,id=cliente_id)
-    return render(request,'imprimir_cadastro.html',{'cliente':cliente})
+    grupos = Grupo.objects.filter(clientes=cliente)
+    return render(request,'imprimir_cadastro.html',{'cliente':cliente,'grupos':grupos})
 
