@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Turismo</title>
+
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="{{ STATIC_URL }}css/datepicker.css" rel="stylesheet" type="text/css" />   
+    <script src="{{ STATIC_URL }}js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/locales/bootstrap-datepicker.pt-BR.js" type="text/javascript"></script>
+
+
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="{{ STATIC_URL }}css/default.css" rel="stylesheet" type="text/css"  />
+    <link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css" />
+	<link href="{{ STATIC_URL }}css/form_padrao.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+		<div class="container">
+			<header class="clearfix">
+				<h1>Turismo</h1>
+			</header>
+            <hr size="5" noshade align="right" style="background:black; margin-top:-30px;"/>
+            <nav class="menu" id="cbp-spmenu-s1">
+			    <h3>Menu</h3>
+			   	<a href="{% url 'destinos:destino_lista' %}">Destinos</a>
+                <a href="{% url 'grupos:grupo_lista' %}">Grupos</a>
+                <a href="{% url 'clientes:cliente_lista' %}">Clientes</a>
+                <a href="{% url 'colaboradores:colaborador_lista' %}">Colaboradores</a>
+                <a href="{% url 'servicos:servico_lista' %}">Serviços</a>
+		    </nav>
+		</div>
+        <div id="centro">
+            {%block content%}
+    		{%endblock%}	
+        </div>
+
+	    <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="{{ STATIC_URL }}js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    	<script src="{{ STATIC_URL }}js/classie.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+        $(document).ready(
+
+            function(){
+
+        {%block jquery%}
+        {%endblock%}
+
+        });
+    </script>
+</body>
+
+    
+
+</html>
