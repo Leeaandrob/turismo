@@ -1,69 +1,6 @@
 {% extends 'base.html' %}
 
 
-
-{%block jquery%}
-//Adicionando ao grupo
-
-$(".add_grupo").click(function(e){
-    e.preventDefault();
-    $id_cliente = this.id
-    
-    $.ajax({
-        type:"POST",
-        cache: false,
-        url: "{% url 'grupos:add_grupo' %}",
-        data: {
-        csrfmiddlewaretoken: "{{csrf_token}}",
-        grupo_id: {{grupo.id}},
-        cliente_id: $id_cliente,
-    },
-        
-        success:function(data){
-            $( "body" ).html(data);
-        },
-    error: function(rs, e){
-        alert(rs);
-
-
-},
-
-    });
-});
-    $('a[data-toggle="pessoas"]').on('shown.bs.tab', function (e) {
-        e.target // activated tab
-        e.relatedTarget // previous tab
-    })
-
-//Removendo cliente do grupo
-$(".rm_grupo").click(function(e){
-    e.preventDefault();
-    $id_cliente = this.id
-    
-    $.ajax({
-        type:"POST",
-        cache: false,
-        url: "{% url 'grupos:rm_grupo' %}",
-        data: {
-        csrfmiddlewaretoken: "{{csrf_token}}",
-        grupo_id: {{grupo.id}},
-        cliente_id: $id_cliente,
-    },
-        
-        success:function(data){
-            $( "body" ).html(data);
-        },
-    error: function(rs, e){
-        alert(rs);
-},
-
-    });
-});
-
-{%endblock%}
-
-
-
 {%block content%}
 {%include 'menu_grupo.html'%}
 
@@ -73,15 +10,13 @@ $(".rm_grupo").click(function(e){
 
 <form class="form-inline" method="POST" >
 
-            {% csrf_token %}            
-            <p><label>{{form.nome.label}} :</label>{{form.nome}}{{form.nome.erros}}</p>
-            <p><label>{{form.destino.label}} :</label>{{form.destino}}{{form.destino.erros}}</p>
-            <p><label>{{form.partida.label}} : </label>{{form.partida}}</p>
-            <p><label>{{form.chegada.label}} : </label>{{form.chegada}}</p>
-            <p><label>{{form.numpessoas.label}} : </label>{{form.numpessoas}}</p>
-            <p><label>{{form.situacao.label}}</label>{{form.situacao}}</p>
-      
-
+    {% csrf_token %}            
+    <p><label>{{form.nome.label}} :</label>{{form.nome}}{{form.nome.erros}}</p>
+    <p><label>{{form.destino.label}} :</label>{{form.destino}}{{form.destino.erros}}</p>
+    <p><label>{{form.partida.label}} : </label>{{form.partida}}</p>
+    <p><label>{{form.chegada.label}} : </label>{{form.chegada}}</p>
+    <p><label>{{form.numpessoas.label}} : </label>{{form.numpessoas}}</p>
+    <p><label>{{form.situacao.label}}</label>{{form.situacao}}</p>
 
 <p><button type="submit" class="btn btn-success">Salvar</button></p>
  

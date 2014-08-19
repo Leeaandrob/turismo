@@ -10,11 +10,18 @@
 			<th>Partida</th>
 			<th>Chegada</th>
 			<th>Nº Pessoas</th>
+			<th>status</th>
 		</tr>
 	</thead>
 	<tbody>
 		{%for g in grupos%}
+		{%if g.situacao == 'B' %}
+			<tr class="success">
+		{%elif g.situacao == 'C'%}
+			<tr class="error">
+		{%else%}
 			<tr>
+		{%endif%}
 				<td class="a-table">
 				<a href="{% url 'grupos:grupo_edit' grupo_id=g.id %}">Editar</a></td>
 				<td>{{g.nome}}</td>
@@ -22,6 +29,7 @@
 				<td>{{g.partida}}</td>
 				<td>{{g.chegada}}</td>
 				<td>{{g.numpessoas}}</td>
+				<td>{{g.situacao}}</td>
 			</tr>
 		{%endfor%}
 	</tbody>

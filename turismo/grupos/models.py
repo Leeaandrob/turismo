@@ -20,10 +20,11 @@ class Grupo(models.Model):
     numpessoas = models.CharField(max_length=3)
     situacao = models.CharField(max_length=1,choices=SITUACAO)
     clientes = models.ManyToManyField(Cliente,verbose_name="Pessoas Listadas", blank=True)
+    #valor = models.DecimalField(default=0.0,max_digits=5,decimal_places=2)
     colaboradores = models.ManyToManyField(Colaborador,verbose_name="Colaboradores", blank=True)
 
 class Roteiro(models.Model):
     titulo = models.CharField(max_length=50)
     descricao = models.CharField(max_length=500)
-    grupo = models.ForeignKey(Grupo)
+    grupo = models.ForeignKey(Grupo,null=True,blank=True)
 

@@ -21,6 +21,7 @@ urlpatterns = patterns('turismo.grupos.views',
     url(r'^roteiros/(?P<grupo_id>\d+)/$','roteiro_create', name='roteiro_create'),
     url(r'^roteiros/(?P<grupo_id>\d+)/(?P<roteiro_id>\d+)$','roteiro_edit', name='roteiro_edit'),
     url(r'^roteiros/lista/(?P<grupo_id>\d+)/$','roteiro_lista', name='roteiro_lista'),
+    
     url(r'^relatorios/(?P<grupo_id>\d+)/$','relatorio_grupo', name='relatorio_grupo'),
     url(r'^relatorios/1/(?P<grupo_id>\d+)/$','relatorio_clientes_telefone', name='relatorio_clientes_telefone'),
     url(r'^relatorios/2/(?P<grupo_id>\d+)/$','relatorio_clientes_rg', name='relatorio_clientes_rg'),

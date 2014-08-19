@@ -143,11 +143,15 @@ def colaboradores_grupo(request,grupo_id):
 
 def roteiro_create(request,grupo_id):
     grupo = get_object_or_404(Grupo,id=grupo_id)
-    form = RoteiroForm(instance=grupo)
-    if not form.is_valid():
-        return render(request, 'roteiros.html', {'form': form,'roteiros':Roteiro.objects.all()})
-    obj = form.save()
-    return HttpResponseRedirect("roteiros.html")
+    if request.method == 'POST':
+        form = RoteiroForm(request.POST)
+        if not form.is_valid():
+            return render(request, 'roteiros.html', {'form': form,'roteiros':Roteiro.objects.filter(grupo=grupo)})
+        obj = form.save()
+        obj.grupo = grupo
+        obj.save()
+    form = RoteiroForm()
+    return render(request, 'roteiros.html', {'form': form,'roteiros':Roteiro.objects.filter(grupo=grupo)})
 
 def roteiro_edit(request,roteiro_id):
     roteiro = get_object_or_404(Roteiro,id=roteiro_id)
@@ -157,9 +161,6 @@ def roteiro_edit(request,roteiro_id):
         return request_roteiro(request,roteiro)
 
 def edit_roteiro(request,grupo):
-    '''
-        @edit_funcao: View para alterar os dados de um funcao
-    '''
     form = RoteiroForm(request.POST,instance=roteiro)
     if form.is_valid():
         roteiro = form.save(commit=False)
@@ -169,16 +170,12 @@ def edit_roteiro(request,grupo):
         return render(request,'roteiro_editar.html',{'form':form})
 
 def request_roteiro(request,roteiro):
-    '''
-        @request_funcao: View para obter os dados de um determinado funcao
-    '''
     form = RoteiroForm(instance=grupo)
     return render(request, 'roteiro_editar.html',
         {'form':form,'roteiro':roteiro})
 
 def roteiro_lista(request,grupo_id):
     return render(request, 'roteiro_lista.html',{'roteiros':Roteiro.objects.all()})
-
 
 
 def relatorio_grupo(request,grupo_id):
