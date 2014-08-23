@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {%block content%}
+<style>
+	
+#id_descricao
+{
+	width:600px;
+}
 
+</style>
 <form class="form-inline" method="POST" >
 	{% csrf_token %}		
 	{{form.non_field_errors}}	

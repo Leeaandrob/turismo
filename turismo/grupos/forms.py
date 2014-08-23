@@ -14,3 +14,6 @@ class GrupoForm(forms.ModelForm):
 class RoteiroForm(forms.ModelForm):
 	class Meta:
 		model = Roteiro
+		widgets = {
+            'descricao': forms.Textarea(attrs={'cols': 200, 'rows': 5}),
+        }

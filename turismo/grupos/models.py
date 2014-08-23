@@ -17,10 +17,10 @@ class Grupo(models.Model):
     destino = models.ForeignKey(Destino)
     partida = models.CharField(max_length=10)
     chegada = models.CharField(max_length=10)
-    numpessoas = models.CharField(max_length=3)
+    numpessoas = models.IntegerField()
     situacao = models.CharField(max_length=1,choices=SITUACAO)
     clientes = models.ManyToManyField(Cliente,verbose_name="Pessoas Listadas", blank=True)
-    #valor = models.DecimalField(default=0.0,max_digits=5,decimal_places=2)
+    valor_pessoa = models.DecimalField(default=0.0,max_digits=5,decimal_places=2)
     colaboradores = models.ManyToManyField(Colaborador,verbose_name="Colaboradores", blank=True)
 
 class Roteiro(models.Model):
