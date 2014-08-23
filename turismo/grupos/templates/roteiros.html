@@ -1,23 +1,7 @@
 {% extends 'base.html' %}
 {%block content%}
-<style>
-	
-#id_descricao
-{
-	width:600px;
-}
-
-</style>
-<form class="form-inline" method="POST" >
-	{% csrf_token %}		
-	{{form.non_field_errors}}	
-	<p><label>{{form.titulo.label}} :</label>{{form.titulo}}{{form.titulo.errors}}</p>
-	<p><label>{{form.descricao.label}} :</label>{{form.descricao}}{{form.descricao.errors}}</p>
-	<!--<p><label>{{form.grupo.label}} :</label>{{form.grupo}}{{form.grupo.errors}}</p>-->
-	<p><button type="submit" class="btn btn-success">Salvar</button></p>
-</form>	
-
-<br/>
+{%include 'menu_grupo.html'%}
+<a class="btn btn-warning" href="{% url 'grupos:roteiro_create' grupo_id=grupo.id %}">Novo</a>
 
 <table class="table">
 	<thead>
@@ -31,7 +15,7 @@
 		{%for r in roteiros%}
 			<tr>
 				<td class="a-table">
-				<a href="">Editar</a></td>
+				<a href="{% url 'grupos:roteiro_edit' roteiro_id=r.id %}">Editar</a></td>
 				<td>{{r.titulo}}</td>
 				<td>{{r.descricao}}</td>
 			</tr>

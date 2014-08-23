@@ -140,6 +140,9 @@ def colaboradores_grupo(request,grupo_id):
         'colaboradores_dentro':grupo.colaboradores.all(),
         'colaboradores_fora':Colaborador.objects.all().exclude(id__in=grupo.colaboradores.all())})
 
+def roteiro_lista(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    return render(request,'roteiros.html',{'grupo':grupo,'roteiros':Roteiro.objects.filter(grupo=grupo)})
 
 def roteiro_create(request,grupo_id):
     grupo = get_object_or_404(Grupo,id=grupo_id)
@@ -150,8 +153,9 @@ def roteiro_create(request,grupo_id):
         obj = form.save()
         obj.grupo = grupo
         obj.save()
+        return render(request,'roteiros.html',{'grupo':grupo,'roteiros':Roteiro.objects.filter(grupo=grupo)})
     form = RoteiroForm()
-    return render(request, 'roteiros.html', {'form': form,'roteiros':Roteiro.objects.filter(grupo=grupo)})
+    return render(request, 'roteiro_novo.html', {'grupo':grupo,'form': form,'roteiros':Roteiro.objects.filter(grupo=grupo)})
 
 def roteiro_edit(request,roteiro_id):
     roteiro = get_object_or_404(Roteiro,id=roteiro_id)
@@ -160,22 +164,22 @@ def roteiro_edit(request,roteiro_id):
     else:
         return request_roteiro(request,roteiro)
 
-def edit_roteiro(request,grupo):
+def edit_roteiro(request,roteiro):
+    grupo = get_object_or_404(Grupo,id=roteiro.grupo.id)
     form = RoteiroForm(request.POST,instance=roteiro)
     if form.is_valid():
         roteiro = form.save(commit=False)
+        roteiro.grupo = grupo
         roteiro.save()
-        return HttpResponseRedirect('roteiros.html')
+        return render(request, 'roteiros.html', {'grupo':grupo,'form': RoteiroForm(),'roteiros':Roteiro.objects.filter(grupo=grupo)})
+
     else:
         return render(request,'roteiro_editar.html',{'form':form})
 
 def request_roteiro(request,roteiro):
-    form = RoteiroForm(instance=grupo)
+    form = RoteiroForm(instance=roteiro)
     return render(request, 'roteiro_editar.html',
         {'form':form,'roteiro':roteiro})
-
-def roteiro_lista(request,grupo_id):
-    return render(request, 'roteiro_lista.html',{'roteiros':Roteiro.objects.all()})
 
 
 def relatorio_grupo(request,grupo_id):
