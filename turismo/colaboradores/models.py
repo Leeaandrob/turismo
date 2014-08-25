@@ -14,8 +14,8 @@ class Colaborador(models.Model):
 	destino = models.ForeignKey(Destino)
 	telefone = models.CharField(max_length=15)
 	telefone2 = models.CharField(max_length=15,blank=True)
-	email = models.CharField(max_length=15,blank=True)
-	site = models.CharField(max_length=15,blank=True)
+	email = models.CharField(max_length=30,blank=True)
+	site = models.CharField(max_length=30,blank=True)
 	servicos = models.ManyToManyField(Servico,verbose_name="Serviços")
 	observacao = models.CharField(max_length=100,blank=True)
 	def __unicode__(self):

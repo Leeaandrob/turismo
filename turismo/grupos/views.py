@@ -64,8 +64,6 @@ def remover_do_grupo(request,grupo_id,cliente_id):
     return HttpResponseRedirect(r('grupos:grupo_edit', args=[grupo.id]))
     #return HttpResponseRedirect(r('grupos:pessoas_grupo', args=[grupo.id]))
 
-
-
 def add_grupo(request):
     if request.is_ajax() and request.POST :
         # do some stuff        
@@ -73,10 +71,8 @@ def add_grupo(request):
         cliente = Cliente.objects.get(id=request.POST['cliente_id'])
         grupo.clientes.add(cliente)
         form = GrupoForm(instance=grupo)
-        return render(request, 'pessoas.html',
-            {'form':form,'grupo':grupo,
-            'clientes_dentro':grupo.clientes.all(),
-            'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+        return render(request, 'pessoa_contrato.html',
+            {'form':form,'grupo':grupo,'cliente':cliente})
     else:
         raise Http404r('grupos:grupo_edit', args=[grupo.id])
 def rm_grupo(request):
@@ -85,23 +81,25 @@ def rm_grupo(request):
         grupo = Grupo.objects.get(id=request.POST['grupo_id'])
         cliente = Cliente.objects.get(id=request.POST['cliente_id'])
         grupo.clientes.remove(cliente)
-        
         form = GrupoForm(instance=grupo)
-        return render(request, 'pessoas.html',
-            {'form':form,'grupo':grupo,
-            'clientes_dentro':grupo.clientes.all(),
-            'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+        return render(request, 'pessoas_dentro.html',
+            {'form':form,'grupo':grupo,'clientes_dentro':grupo.clientes.all()})
     else:
         raise Http404
 
+def clientes_fora(request,grupo_id):
+    grupo = get_object_or_404(Grupo,id=grupo_id)
+    return render(request, 'pessoas_fora.html',
+       {'grupo':grupo,'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+
 def clientes_grupo(request,grupo_id):
     grupo = get_object_or_404(Grupo,id=grupo_id)
-    return render(request, 'pessoas.html',
-        {'grupo':grupo,
-        'clientes_dentro':grupo.clientes.all(),
-        'clientes_fora':Cliente.objects.all().exclude(id__in=grupo.clientes.all())})
+    #return HttpResponseRedirect("/grupos/clientes/"+str(grupo.id)
+    return render(request, 'pessoas_dentro.html',
+       {'grupo':grupo,'clientes_dentro':grupo.clientes.all(),})
 
-
+def cliente_contrato(request,cliente_id,grupo_id):
+    pass
 
 
 def add_colaborador_grupo(request):

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{%block content%}
+{%include 'menu_grupo.html'%}
+
+
+<h5>Dados do grupo</h5>
+Nome do grupo: {{grupo.nome}}<br/>
+Destino: {{grupo.destino}}<br/>
+Data da partida: {{grupo.partida}} <br/>
+Data da chegada: {{grupo.chegada}} <br/>
+Valor: {{grupo.valor_pessoa}}
+<h5>Dados da pessoa</h5>
+
+Nome do cliente: {{cliente.nome}}<br/>
+CPF: {{cliente.cpf}}<br/><br/>
+
+<a href="" class="btn btn-success">Imprimir Contrato</a>
+
+
+
+{%endblock%}
+

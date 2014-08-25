@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{%block jquery%}
+//Adicionando ao grupo
+
+$(".add_grupo").click(function(e){
+    e.preventDefault();
+    $id_cliente = this.id
+    
+    $.ajax({
+        type:"POST",
+        cache: false,
+        url: "{% url 'grupos:add_grupo' %}",
+        data: {
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        grupo_id: {{grupo.id}},
+        cliente_id: $id_cliente,
+    },
+        
+        success:function(data){
+            $( "body" ).html(data);
+        },
+    error: function(rs, e){
+        alert(rs);
+},
+
+    });
+});
+
+
+//Removendo disciplinas
+$(".rm_grupo").click(function(e){
+    e.preventDefault();
+    $id_cliente = this.id
+    
+    $.ajax({
+        type:"POST",
+        cache: false,
+        url: "{% url 'grupos:rm_grupo' %}",
+        data: {
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        grupo_id: {{grupo.id}},
+        cliente_id: $id_cliente,
+    },
+        
+        success:function(data){
+            $( "body" ).html(data);
+        },
+    error: function(rs, e){
+        alert(rs);
+},
+
+    });
+});
+
+{%endblock%}
+
+
+{%block content%}
+{%include 'menu_grupo.html'%}
+
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Clientes que não estão no grupo</h4>
+    </div>
+
+    <div class="panel-body">
+          <div class="adv-table">
+              <table class="table table-bordered table-striped" id="hidden-table-info">
+                 <thead>
+                <tr>
+                    <th>Adicionar</th>
+                    <th>Nome</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                {% for d in clientes_fora %}
+                      <tr>
+                        <td class="td-tam"> 
+                          <form id="{{d.id}}" method='POST'>
+                                  {%csrf_token%}
+                                  <a class ="add_grupo btn-link" id='{{d.id}}' style="width:100px">
+                                  Adicionar</a>
+                          </form>
+                        </td>
+                        <td>{{d.nome}}</td>
+                      </tr>
+                {%endfor%}
+              
+              </tbody>
+              </table>
+
+          </div>
+    </div>
+
+  <script src="{{ STATIC_URL }}js/jquery.dataTables.js" type="text/javascript" ></script>
+  <script src="{{ STATIC_URL }}js/DT_bootstrap.js" type="text/javascript" ></script>
+
+        <script type="text/javascript">
+          /* Formating function for row details */
+
+         $(document).ready(function() {
+              var oTable = $('#hidden-table-info').dataTable( {
+                  "aoColumnDefs": [
+                      { "bSortable": false, "aTargets": [ 0 ] }
+                  ],
+                  "aaSorting": [[1, 'asc']]
+              });
+
+          } );
+      </script>
+{%endblock%}
