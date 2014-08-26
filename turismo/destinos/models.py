@@ -1,6 +1,6 @@
 #coding: utf-8
 from django.db import models
-from imagekit.models import ImageSpecField
+
 # Create your models here.
 
 class Destino(models.Model):
